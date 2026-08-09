@@ -73,41 +73,41 @@ h2{font-size:clamp(34px,7vw,64px);margin-bottom:12px}
   .music-player{right:12px;left:12px;bottom:10px}
   .glass-card{padding:32px 22px}
 }
-/* MUSIC PLAYER KECIL DI HP */
+/* MUSIC PLAYER MINI DI HP */
 @media (max-width: 600px) {
   .music-player {
-    width: 270px;
-    max-width: calc(100vw - 30px);
-    left: 50%;
-    right: auto;
-    bottom: 12px;
-    transform: translateX(-50%);
-    padding: 9px 12px;
-    gap: 9px;
-    border-radius: 18px;
+    width: 220px !important;
+    max-width: calc(100vw - 30px) !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 10px !important;
+    transform: translateX(-50%) !important;
+    padding: 7px 10px !important;
+    gap: 8px !important;
+    border-radius: 16px !important;
   }
 
-  .music-player > button {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    font-size: 18px;
+  .music-player button {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    font-size: 16px !important;
   }
 
   .music-player div {
-    min-width: 90px;
+    min-width: 0 !important;
+    flex: 1 !important;
   }
 
   .music-player strong {
-    font-size: 13px;
+    font-size: 12px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .music-player span {
-    font-size: 10px;
-  }
-
+  .music-player span,
   .music-player input {
-    width: 65px;
-    flex: none;
+    display: none !important;
   }
 }
