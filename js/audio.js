@@ -1,31 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("backgroundMusic");
-  audio.volume = 0.35;
   const toggle = document.getElementById("musicToggle");
   const status = document.getElementById("musicStatus");
   const progress = document.getElementById("musicProgress");
+  const enterButton = document.querySelector('[data-next="welcome"]');
+
+  audio.volume = 0.35;
+
+  async function playMusic() {
+    try {
+      await audio.play();
+      toggle.textContent = "❚❚";
+      status.textContent = "Sedang diputar";
+    } catch (error) {
+      toggle.textContent = "♫";
+      status.textContent = "Tekan untuk memutar";
+    }
+  }
+
+  enterButton.addEventListener("click", playMusic, {
+    once: true
+  });
 
   toggle.addEventListener("click", async () => {
-    try {
-      if (audio.paused) {
-        await audio.play();
-        toggle.textContent = "❚❚";
-        status.textContent = "Sedang diputar";
-      } else {
-        audio.pause();
-        toggle.textContent = "♫";
-        status.textContent = "Musik dijeda";
-      }
-    } catch (_) {
-      status.textContent = "Masukkan background.mp3";
+    if (audio.paused) {
+      await playMusic();
+    } else {
+      audio.pause();
+      toggle.textContent = "♫";
+      status.textContent = "Musik dijeda";
     }
   });
 
   audio.addEventListener("timeupdate", () => {
-    if (audio.duration) progress.value = (audio.currentTime / audio.duration) * 100;
-  });
-
-  progress.addEventListener("input", () => {
-    if (audio.duration) audio.currentTime = (progress.value / 100) * audio.duration;
+    if (progress && audio.duration) {
+      progress.value =
+        (audio.currentTime / audio.duration) * 100;
+    }
   });
 });
