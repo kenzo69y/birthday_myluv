@@ -1,0 +1,24 @@
+CARA MENAMBAHKAN FOTO
+
+1. Buka folder "images".
+2. Masukkan empat foto kamu ke dalam folder tersebut.
+3. Supaya paling mudah, beri nama:
+   - foto-1.jpg
+   - foto-2.jpg
+   - foto-3.jpg
+   - foto-4.jpg
+4. Buka file index.html menggunakan VS Code.
+5. Tekan Ctrl + H, lalu ganti semuanya:
+   - images/photo-1.svg menjadi images/foto-1.jpg
+   - images/photo-2.svg menjadi images/foto-2.jpg
+   - images/photo-3.svg menjadi images/foto-3.jpg
+   - images/photo-4.svg menjadi images/foto-4.jpg
+6. Buka file css/ending.css.
+7. Ganti ../images/photo-1.svg menjadi ../images/foto-1.jpg.
+8. Simpan semuanya dengan Ctrl + S, lalu buka index.html menggunakan Live Server.
+
+CATATAN
+- Jika foto berformat PNG, gunakan nama foto-1.png dan seterusnya, lalu sesuaikan tulisan .jpg menjadi .png.
+- Jangan menghapus folder css, js, music, videos, atau images.
+- Foto vertikal dengan rasio sekitar 4:5 akan terlihat paling bagus.
+- Setelah berhasil di komputer, upload kembali seluruh isi folder ke repository GitHub tes-birthday.

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#160c1f">
+  <title>For Mia — Birthday Signature</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/intro.css">
+  <link rel="stylesheet" href="css/envelope.css">
+  <link rel="stylesheet" href="css/book.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/video.css">
+  <link rel="stylesheet" href="css/cake.css">
+  <link rel="stylesheet" href="css/ending.css">
+  <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+  <div id="app">
+    <section class="scene is-active" data-scene="loading">
+      <div class="loading-card">
+        <p class="eyebrow">INITIALIZING LOVE STORY</p>
+        <h1>For Mia</h1>
+        <div class="loading-track"><span id="loadingBar"></span></div>
+        <p id="loadingPercent">0%</p>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="intro">
+      <div class="night-sky">
+        <div class="moon"></div>
+        <div id="introStars" class="intro-stars"></div>
+      </div>
+
+      <div class="intro-content">
+        <p class="eyebrow">A LOVE STORY PRESENTS</p>
+        <h1>For Mia</h1>
+        <p class="intro-subtitle">P A C A R     T E R C I N T A ❤️</p>
+        <button class="primary-button" data-next="welcome">Masuk Sekarang</button>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="welcome">
+      <div class="glass-card welcome-card">
+        <span class="mini-heart">♥</span>
+        <p class="eyebrow">HAPPY BIRTHDAY, SAYANG</p>
+        <h2>Untuk kamu, Rumah dari Segala Bahagiaku</h2>
+        <p>Di hari spesialmu, aku membuat tempat kecil ini untuk menyimpan cerita, kenangan, dan semua rasa sayangku kepadamu</p>
+        <button class="primary-button" data-next="envelope">Buka Isi Hatiku 💌</button>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="envelope">
+      <button class="back-button" data-back="welcome">←</button>
+
+      <div class="envelope-stage">
+        <p class="eyebrow">DRAG ATAU KLIK AMPLOPNYA</p>
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          <div class="envelope-letter">
+            <span>Untuk Mia ❤️</span>
+          </div>
+          <div class="envelope-front"></div>
+          <div class="envelope-flap"></div>
+          <div class="seal">♥</div>
+        </div>
+        <button class="primary-button hidden-action" id="readLetterButton" data-next="letter">
+          Baca Suratnya
+        </button>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="letter">
+      <button class="back-button" data-back="envelope">←</button>
+      <article class="letter-paper">
+        <p class="eyebrow">A LETTER FOR YOU</p>
+        <h2>Untuk Mia, Sayangku ❤️</h2>
+        <p id="letterTyping"></p>
+        <button class="primary-button hidden-action" id="letterNextButton" data-next="book">
+          Buka Buku Kenangan 📖
+        </button>
+      </article>
+    </section>
+
+    <section class="scene" data-scene="book">
+      <button class="back-button" data-back="letter">←</button>
+
+      <div class="book-shell">
+        <header>
+          <p class="eyebrow">OUR STORY BOOK</p>
+          <h2>Buku Kenangan Kita</h2>
+        </header>
+
+        <div class="memory-book" id="memoryBook">
+          <article class="book-page is-current">
+            <span class="page-number">01</span>
+            <img src="images/foto-1.jpg" alt="Kenangan pertama">
+            <h3>Awal Cerita Kita</h3>
+            <p>Sejak hari itu, hidupku terasa lebih indah karena ada kamu di dalamnya.</p>
+          </article>
+
+          <article class="book-page">
+            <span class="page-number">02</span>
+            <img src="images/foto-2.jpg" alt="Kenangan kedua">
+            <h3>Semakin Berarti</h3>
+            <p>Obrolan sederhana bersamamu selalu berhasil menjadi bagian terbaik dari hariku.</p>
+          </article>
+
+          <article class="book-page">
+            <span class="page-number">03</span>
+            <img src="images/foto-3.jpg" alt="Kenangan ketiga">
+            <h3>Hari-Hari Bahagia</h3>
+            <p>Bersamamu, hal kecil pun berubah menjadi kenangan yang ingin kusimpan selamanya.</p>
+          </article>
+
+          <article class="book-page">
+            <span class="page-number">04</span>
+            <img src="images/foto-4.jpg" alt="Kenangan keempat">
+            <h3>Sampai Jarak Ini Berakhir</h3>
+            <p>Semoga suatu hari nanti, kita kembali berada di tempat yang sama dan melanjutkan semua cerita yang sempat tertunda karena jarak.</p>
+          </article>
+        </div>
+
+        <div class="book-controls">
+          <button class="secondary-button" id="bookPrev">← Sebelumnya</button>
+          <span id="bookIndicator">1 / 4</span>
+          <button class="secondary-button" id="bookNext">Berikutnya →</button>
+        </div>
+
+        <button class="primary-button hidden-action" id="bookContinue" data-next="gallery">
+          Lanjut ke Galeri 📸
+        </button>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="gallery">
+      <button class="back-button" data-back="book">←</button>
+
+      <div class="gallery-shell">
+        <header>
+          <p class="eyebrow">POLAROID MEMORIES</p>
+          <h2>Galeri Kenangan</h2>
+          <p>Klik foto untuk memperbesar. Foto juga bisa digeser geser.</p>
+        </header>
+
+        <div class="polaroid-board" id="polaroidBoard">
+          <figure class="polaroid" style="--r:-6deg; --x:3%;">
+            <img src="images/foto-1.jpg" alt="Foto pertama">
+            <figcaption>Our first chapter ❤️</figcaption>
+          </figure>
+          <figure class="polaroid" style="--r:5deg; --x:24%;">
+            <img src="images/foto-2.jpg" alt="Foto kedua">
+            <figcaption>Little moments</figcaption>
+          </figure>
+          <figure class="polaroid" style="--r:-3deg; --x:47%;">
+            <img src="images/foto-3.jpg" alt="Foto ketiga">
+            <figcaption>My favorite smile</figcaption>
+          </figure>
+          <figure class="polaroid" style="--r:7deg; --x:70%;">
+            <img src="images/foto-4.jpg" alt="Foto keempat">
+            <figcaption>Forever us</figcaption>
+          </figure>
+        </div>
+
+        <button class="primary-button" data-next="video">Putar Video Kenangan 🎬</button>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="video">
+      <button class="back-button" data-back="gallery">←</button>
+
+      <div class="cinema-shell">
+        <header>
+          <p class="eyebrow">OUR MINI CINEMA</p>
+          <h2>Video Kenangan</h2>
+        </header>
+
+        <div class="cinema-frame" id="cinemaFrame">
+          <video id="memoryVideo" preload="metadata">
+            <source src="videos/memory.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder" id="videoPlaceholder">
+            <span>🎥</span>
+            <p>Masukkan video bernama <strong>memory.mp4</strong> ke folder videos.</p>
+          </div>
+        </div>
+
+        <div class="video-controls">
+          <button id="videoPlay">▶</button>
+          <input id="videoProgress" type="range" min="0" max="100" value="0">
+          <button id="videoMute">🔊</button>
+          <button id="videoCinema">Cinema</button>
+          <button id="videoFullscreen">⛶</button>
+        </div>
+
+        <button class="primary-button" data-next="cake">Lanjut ke Kejutan Utama 🎂</button>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="cake">
+      <button class="back-button" data-back="video">←</button>
+
+      <div id="balloonLayer" class="balloon-layer"></div>
+      <div id="cakeEffects" class="cake-effects"></div>
+
+      <div class="cake-shell">
+        <p class="eyebrow">MAKE A WISH</p>
+        <h2>Tiup Lilinnya 🎂</h2>
+
+        <div class="cake">
+          <div class="candle">
+            <span class="flame" id="flame"></span>
+            <span class="wick"></span>
+          </div>
+          <div class="cake-top"></div>
+          <div class="cake-body">
+            <span class="icing icing-one"></span>
+            <span class="icing icing-two"></span>
+            <span class="icing icing-three"></span>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <p id="wishText">Pejamkan matamu dan buatlah satu permintaan, lalu tekan tombol di bawah.</p>
+        <button class="primary-button" id="blowButton">Tiup Lilinnya 🌬️</button>
+        <button class="primary-button hidden-action" id="endingButton" data-next="ending">
+          Lihat Pesan Terakhir ❤️
+        </button>
+      </div>
+    </section>
+
+    <section class="scene" data-scene="ending">
+      <div id="endingFireworks" class="ending-fireworks"></div>
+      <div class="ending-overlay"></div>
+
+      <div class="ending-content">
+        <p class="eyebrow">THE END</p>
+        <h2>Happy Birthday, Sayang ❤️</h2>
+        <p id="endingTyping"></p>
+        <h3>I Love You Forever</h3>
+        <p class="signature">— Aldi —</p>
+
+        <button class="primary-button" id="creditsButton">Lihat Credit Film 🎬</button>
+        <button class="secondary-button" id="restartButton">Kembali ke Awal ↻</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="music-player">
+    <button id="musicToggle">♫</button>
+    <div>
+      <strong>Shape Of My Heart</strong>
+      <span id="musicStatus">Klik untuk memutar</span>
+    </div>
+    <input id="musicProgress" type="range" min="0" max="100" value="0">
+    <audio id="backgroundMusic" loop>
+    <source src="music/Shape Of My Heart.mp3" type="audio/mpeg">
+</audio>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <button id="lightboxClose">×</button>
+    <img id="lightboxImage" alt="Foto diperbesar">
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <div class="credits-screen" id="creditsScreen">
+    <button id="creditsClose">×</button>
+    <div class="credits-roll">
+      <p>THANK YOU FOR WATCHING</p>
+      <h2>Happy Birthday<br>Mia Ramadani ❤️</h2>
+      <p>Starring</p>
+      <h3>Mia & Aldi</h3>
+      <p>Story, Design & Love</p>
+      <h3>Aldi</h3>
+      <p>Made with ❤️</p>
+      <h2>2026</h2>
+    </div>
+  </div>
+
+  <div id="cursorLayer" class="cursor-layer"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/intro.js"></script>
+  <script src="js/envelope.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/video.js"></script>
+  <script src="js/cake.js"></script>
+  <script src="js/ending.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/effects.js"></script>
+</body>
+</html>

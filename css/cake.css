@@ -1,0 +1,33 @@
+.cake-shell{text-align:center;position:relative;z-index:10}
+.cake{position:relative;width:300px;height:310px;margin:18px auto 28px}
+.cake-body{position:absolute;left:35px;right:35px;bottom:35px;height:155px;border-radius:25px 25px 40px 40px;
+ background:linear-gradient(90deg,#ff91ba,#ffd0df 45%,#ff84af)}
+.cake-top{position:absolute;left:35px;right:35px;bottom:165px;height:64px;border-radius:50%;background:#ffe9f1;z-index:2}
+.cake-plate{position:absolute;left:10px;right:10px;bottom:15px;height:28px;border-radius:50%;background:#e9e5f2}
+.candle{position:absolute;z-index:5;left:50%;bottom:215px;width:18px;height:82px;transform:translateX(-50%);
+ background:repeating-linear-gradient(45deg,#fff 0 8px,#ff6fa8 8px 16px)}
+.wick{position:absolute;left:8px;top:-9px;width:2px;height:12px;background:#2e1c24}
+.flame{position:absolute;left:50%;top:-46px;width:28px;height:44px;transform:translateX(-50%);border-radius:55% 45% 60% 40%;
+ background:radial-gradient(circle at 50% 65%,#fff,#ffd769 35%,#ff6e37 70%);filter:drop-shadow(0 0 18px #ffb149);
+ animation:flameMove .55s ease-in-out infinite alternate}
+.flame.is-off{display:none}
+@keyframes flameMove{to{transform:translateX(-50%) rotate(5deg) scale(.92,1.08)}}
+.icing{position:absolute;top:0;width:36px;height:55px;border-radius:0 0 20px 20px;background:#fff2f6}
+.icing-one{left:25px}.icing-two{left:100px;height:72px}.icing-three{right:30px}
+.balloon-layer,.cake-effects{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.balloon{position:absolute;bottom:-120px;width:58px;height:72px;border-radius:50% 50% 46% 46%;pointer-events:auto;
+ animation:balloonRise var(--dur) linear forwards;box-shadow:inset -10px -12px 18px rgba(0,0,0,.18)}
+.balloon::after{content:"";position:absolute;left:50%;top:70px;width:1px;height:90px;background:rgba(255,255,255,.45)}
+@keyframes balloonRise{to{transform:translateY(-125vh) translateX(var(--drift)) rotate(12deg)}}
+.smoke{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75),rgba(220,220,220,.2),transparent 70%);
+ filter:blur(4px);animation:smokeRise 2.5s ease-out forwards}
+@keyframes smokeRise{to{opacity:0;transform:translate(var(--dx),-220px) scale(2.5)}}
+.confetti{position:absolute;top:-25px;animation:confettiFall var(--dur) linear forwards}
+@keyframes confettiFall{to{transform:translate(var(--dx),115vh) rotate(900deg)}}
+.flying-heart{position:absolute;bottom:-40px;animation:heartRise var(--dur) ease-out forwards}
+@keyframes heartRise{to{opacity:0;transform:translate(var(--dx),-110vh) scale(1.5) rotate(260deg)}}
+.firework-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:white;animation:fireworkBurst 1.6s ease-out forwards}
+@keyframes fireworkBurst{
+ to{opacity:0;box-shadow:0 -95px 0 #fff,67px -67px 0 #ff72b1,95px 0 0 #ffd166,67px 67px 0 #8be9fd,
+ 0 95px 0 #fff,-67px 67px 0 #ff72b1,-95px 0 0 #ffd166,-67px -67px 0 #8be9fd;transform:scale(1.35)}
+}

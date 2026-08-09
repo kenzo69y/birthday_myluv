@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#18324e"/><stop offset="1" stop-color="#94d8ff"/></linearGradient></defs>
+<rect width="1200" height="1500" fill="url(#g)"/>
+<circle cx="600" cy="500" r="230" fill="rgba(255,255,255,.14)"/>
+<text x="600" y="730" text-anchor="middle" fill="white" font-family="Georgia" font-size="92">PHOTO 2</text>
+<text x="600" y="835" text-anchor="middle" fill="white" opacity=".82" font-family="Arial" font-size="45">Semakin Dekat</text>
+<text x="600" y="1260" text-anchor="middle" fill="white" opacity=".65" font-family="Arial" font-size="32">Ganti file ini dengan foto kalian</text>
+</svg>

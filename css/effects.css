@@ -1,0 +1,2 @@
+.sakura{position:fixed;z-index:20;top:-30px;pointer-events:none;animation:sakuraFall var(--dur) linear forwards}
+@keyframes sakuraFall{to{transform:translate(var(--drift),115vh) rotate(720deg);opacity:.15}}
