@@ -15,8 +15,159 @@
   <link rel="stylesheet" href="css/cake.css">
   <link rel="stylesheet" href="css/ending.css">
   <link rel="stylesheet" href="css/effects.css">
+
+  <style>
+    body.is-locked { overflow: hidden; }
+    body.is-locked > :not(#loveLock):not(script) {
+      visibility: hidden !important;
+    }
+    .love-lock {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 120, 171, .25), transparent 28%),
+        radial-gradient(circle at 82% 78%, rgba(191, 76, 137, .25), transparent 30%),
+        linear-gradient(145deg, #160b1e, #351027 55%, #1a0b21);
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      transition: opacity .55s ease, visibility .55s ease;
+    }
+    .love-lock.is-unlocked {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .love-lock::before,
+    .love-lock::after {
+      content: "♥";
+      position: absolute;
+      color: rgba(255, 143, 184, .16);
+      font-size: clamp(240px, 42vw, 560px);
+      animation: lockFloat 5s ease-in-out infinite alternate;
+    }
+    .love-lock::before { top: -150px; left: -90px; transform: rotate(-18deg); }
+    .love-lock::after { right: -90px; bottom: -190px; transform: rotate(18deg); animation-delay: -2.5s; }
+    .love-lock-card {
+      position: relative;
+      z-index: 1;
+      width: min(420px, 100%);
+      padding: 42px 30px 34px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 30px;
+      background: rgba(255,255,255,.1);
+      box-shadow: 0 30px 90px rgba(0,0,0,.42);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      text-align: center;
+    }
+    .love-lock-icon {
+      display: grid;
+      place-items: center;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ff79aa, #ff3e7f);
+      box-shadow: 0 12px 35px rgba(255,62,127,.35);
+      font-size: 38px;
+      animation: lockPulse 1.7s ease-in-out infinite;
+    }
+    .love-lock-eyebrow {
+      margin: 0 0 8px;
+      color: #ffc4da;
+      font: 600 11px/1.4 Arial, sans-serif;
+      letter-spacing: .28em;
+    }
+    .love-lock h1 {
+      margin: 0 0 10px;
+      font-size: clamp(34px, 8vw, 48px);
+      line-height: 1.05;
+    }
+    .love-lock-copy {
+      margin: 0 auto 24px;
+      max-width: 320px;
+      color: rgba(255,255,255,.78);
+      font: 15px/1.65 Arial, sans-serif;
+    }
+    .love-lock-input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 58px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 17px;
+      outline: 0;
+      background: rgba(9,3,14,.38);
+      color: #fff;
+      text-align: center;
+      font: 700 24px/1 Arial, sans-serif;
+      letter-spacing: .38em;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+    }
+    .love-lock-input:focus {
+      border-color: #ff8db8;
+      box-shadow: 0 0 0 4px rgba(255,141,184,.14);
+    }
+    .love-lock-button {
+      width: 100%;
+      min-height: 54px;
+      margin-top: 13px;
+      border: 0;
+      border-radius: 17px;
+      cursor: pointer;
+      color: #421027;
+      background: linear-gradient(135deg, #fff, #ffd8e8);
+      font: 700 15px/1.2 Arial, sans-serif;
+      box-shadow: 0 12px 30px rgba(0,0,0,.2);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .love-lock-button:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,.28); }
+    .love-lock-message {
+      min-height: 20px;
+      margin: 12px 0 0;
+      color: #ffabc9;
+      font: 13px/1.4 Arial, sans-serif;
+    }
+    .love-lock-card.is-wrong { animation: lockShake .38s ease; }
+    @keyframes lockPulse { 50% { transform: scale(1.08); } }
+    @keyframes lockFloat { to { transform: translateY(24px) rotate(5deg); } }
+    @keyframes lockShake {
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    @media (max-width: 480px) {
+      .love-lock-card { padding: 34px 22px 28px; border-radius: 25px; }
+      .love-lock-icon { width: 70px; height: 70px; font-size: 32px; }
+    }
+  </style>
 </head>
-<body>
+<body class="is-locked">
+  <div class="love-lock" id="loveLock" role="dialog" aria-modal="true" aria-labelledby="loveLockTitle">
+    <form class="love-lock-card" id="loveLockForm" autocomplete="off">
+      <div class="love-lock-icon" aria-hidden="true">♥</div>
+      <p class="love-lock-eyebrow">PRIVATE LOVE STORY</p>
+      <h1 id="loveLockTitle">Kode Cinta</h1>
+      <p class="love-lock-copy">Masukkan tanggal rahasia kita untuk membuka kejutan spesial ini ❤️</p>
+      <input
+        class="love-lock-input"
+        id="lovePassword"
+        type="password"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        maxlength="6"
+        placeholder="••••••"
+        aria-label="Masukkan kode cinta"
+        autofocus
+      >
+      <button class="love-lock-button" type="submit">Buka Kejutan ❤️</button>
+      <p class="love-lock-message" id="loveLockMessage" aria-live="polite"></p>
+    </form>
+  </div>
+
   <div id="app">
     <section class="scene is-active" data-scene="loading">
       <div class="loading-card">
@@ -280,6 +431,49 @@
   </div>
 
   <div id="cursorLayer" class="cursor-layer"></div>
+
+
+  <script>
+    (() => {
+      const PASSWORD = "110526";
+      const lock = document.getElementById("loveLock");
+      const form = document.getElementById("loveLockForm");
+      const card = form.querySelector(".love-lock-card");
+      const input = document.getElementById("lovePassword");
+      const message = document.getElementById("loveLockMessage");
+
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/\D/g, "").slice(0, 6);
+        message.textContent = "";
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (input.value === PASSWORD) {
+          message.textContent = "Kode benar. Selamat datang, Sayang ❤️";
+          lock.classList.add("is-unlocked");
+          document.body.classList.remove("is-locked");
+
+          setTimeout(() => {
+            const music = document.getElementById("backgroundMusic");
+            if (music) {
+              music.play().catch(() => {});
+            }
+            lock.remove();
+          }, 600);
+          return;
+        }
+
+        message.textContent = "Kode belum tepat, Sayang. Coba ingat tanggal kita ❤️";
+        input.value = "";
+        input.focus();
+        card.classList.remove("is-wrong");
+        void card.offsetWidth;
+        card.classList.add("is-wrong");
+      });
+    })();
+  </script>
 
   <script src="js/app.js"></script>
   <script src="js/intro.js"></script>
